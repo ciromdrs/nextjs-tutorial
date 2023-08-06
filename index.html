@@ -3,23 +3,35 @@
   <body>
     <div id="app"></div>
 
-    <script type="text/javascript">
-      // Select the div element with 'app' id
-      const app = document.getElementById('app');
 
-      // Create a new H1 element
-      const header = document.createElement('h1');
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-      // Create a new text node for the H1 element
-      const headerContent = document.createTextNode(
-        'Develop. Preview. Ship. 🚀',
-      );
+    <script type="text/jsx">
+        // Select the div element with 'app' id
+        const app = document.getElementById('app');
 
-      // Append the text to the H1 element
-      header.appendChild(headerContent);
+        function Header({ title }) {
+            return (<h1>{ title ? title : 'Someone forgot to set this title' }</h1>) 
+        }
 
-      // Place the H1 element inside the div
-      app.appendChild(header);
+        function HomePage() {
+            const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+            return (
+                <div>
+                    {/* Nesting the Header component */}
+                    <Header title="React 🤔️"/>
+                    <ul>
+                        {names.map((name) => (
+                            <li key={name}>{name}</li>
+                        ))}
+                    </ul>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<HomePage />, app);
     </script>
   </body>
 </html>
